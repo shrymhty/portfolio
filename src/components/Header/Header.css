@@ -59,7 +59,7 @@
 
 .my-name:hover .glitch-layer::before,
 .my-name:hover .glitch-layer::after {
-  animation: glitch 0.6s infinite alternate-reverse;
+  animation: glitch 1.2s infinite alternate-reverse;
 }
 
 .glitch-layer::before {

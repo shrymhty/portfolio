@@ -1,84 +1,84 @@
-import React, { useEffect, useRef, useState } from 'react'
-import './Header.css'
-import MyFace from '../MyFace/MyFace'
-import { useScroll, useTransform, motion } from 'framer-motion'
+  import React, { useEffect, useRef, useState } from 'react'
+  import './Header.css'
+  import MyFace from '../MyFace/MyFace'
+  import { useScroll, useTransform, motion } from 'framer-motion'
 
-const Header = () => {
+  const Header = () => {
 
-  const { scrollY } = useScroll();
- const opacity = useTransform(scrollY, [0, 700], [1, 0]);
+    const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 700], [1, 0]);
 
-  const phrases = [
-    'developer',
-    'engineer',
-    'data scientist',
-    'designer'
-  ];
+    const phrases = [
+      'developer',
+      'engineer',
+      'data scientist',
+      'designer'
+    ];
 
-  const scrambleChars = '01{}[]<>+-=*/%$#@!&^';
-  const scrambleRef = useRef(null);
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+    const scrambleChars = '01{}[]<>+-=*/%$#@!&^';
+    const scrambleRef = useRef(null);
+    const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
 
-  useEffect(() => {
-    let frame = 0;
-    let interval;
-    let timeout;
+    useEffect(() => {
+      let frame = 0;
+      let interval;
+      let timeout;
 
-    const scrambleText = (text) => {
-      const iterations = 30;
-      let scrambled = text.split('').map(() => getRandomChar()).join('');
-      scrambleRef.current.textContent = scrambled;
-
-      interval = setInterval(() => {
-        scrambled = scrambled
-          .split('')
-          .map((char, i) => {
-            if (frame > i + Math.floor(iterations / text.length)) return text[i];
-            return getRandomChar();
-          })
-          .join('');
-
+      const scrambleText = (text) => {
+        const iterations = 50;
+        let scrambled = text.split('').map(() => getRandomChar()).join('');
         scrambleRef.current.textContent = scrambled;
-        frame++;
 
-        if (frame > iterations) {
-          clearInterval(interval);
-          timeout = setTimeout(() => {
-            const next = (currentPhraseIndex + 1) % phrases.length;
-            setCurrentPhraseIndex(next);
-          }, 800); // Pause after full phrase appears
-        }
-      }, 50);
-    };
+        interval = setInterval(() => {
+          scrambled = scrambled
+            .split('')
+            .map((char, i) => {
+              if (frame > i + Math.floor(iterations / text.length)) return text[i];
+              return getRandomChar();
+            })
+            .join('');
 
-    const getRandomChar = () => {
-      return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-    };
+          scrambleRef.current.textContent = scrambled;
+          frame++;
 
-    if (scrambleRef.current) {
-      scrambleText(phrases[currentPhraseIndex]);
-    }
+          if (frame > iterations) {
+            clearInterval(interval);
+            timeout = setTimeout(() => {
+              const next = (currentPhraseIndex + 1) % phrases.length;
+              setCurrentPhraseIndex(next);
+            }, 800); // Pause after full phrase appears
+          }
+        }, 50);
+      };
 
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
-  }, [currentPhraseIndex]);
+      const getRandomChar = () => {
+        return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+      };
 
-  return (
-    <motion.div className='header-div' style={{opacity}}>
-      <div className="left">
-        <div className="my-name">
-          <span className="glitch-layer" data-text="SHREYA">SHREYA</span>&nbsp;
-          <span className="glitch-layer" data-text="MOHANTY">MOHANTY</span>
+      if (scrambleRef.current) {
+        scrambleText(phrases[currentPhraseIndex]);
+      }
+
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+      };
+    }, [currentPhraseIndex]);
+
+    return (
+      <motion.div className='header-div' style={{opacity}}>
+        <div className="left">
+          <div className="my-name">
+            <span className="glitch-layer" data-text="SHREYA">SHREYA</span>&nbsp;
+            <span className="glitch-layer" data-text="MOHANTY">MOHANTY</span>
+          </div>
+          <p><span className="scramble" ref={scrambleRef}></span></p>
         </div>
-        <p><span className="scramble" ref={scrambleRef}></span></p>
-      </div>
-      <div className="right">
-        <MyFace />
-      </div>
-    </motion.div>
-  )
-}
+        <div className="right">
+          <MyFace />
+        </div>
+      </motion.div>
+    )
+  }
 
-export default Header;
+  export default Header;
