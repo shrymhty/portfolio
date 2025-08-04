@@ -46,7 +46,7 @@
             timeout = setTimeout(() => {
               const next = (currentPhraseIndex + 1) % phrases.length;
               setCurrentPhraseIndex(next);
-            }, 1000); // Pause after full phrase appears
+            }, 800); // Pause after full phrase appears
           }
         }, 70);
       };
