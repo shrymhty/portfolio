@@ -3,7 +3,6 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Header from './components/Header/Header'
 import About from './components/About/About'
-import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
 import Contact from './components/Contact/Contact'
 
@@ -11,16 +10,20 @@ const App = () => {
   return (
     <>
       <Navbar />
+      <div id="home" className="section">
+        <Header />
+      </div>
+      <div id="about" className="section">
+        <About />
+      </div>
       <hr />
-      <Header />
+      <div id="projects" className="section">
+        <Projects />
+      </div>
       <hr />
-      <About />
-      <hr />
-      <Skills />
-      <hr />
-      <Projects />
-      <hr />
-      <Contact />
+      <div id="contact" className="section">
+        <Contact />
+      </div>
     </>
 
   )

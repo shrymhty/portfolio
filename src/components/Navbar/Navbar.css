@@ -1,5 +1,10 @@
 .navbar {
-    padding: 12px 24px;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  border-bottom: solid 1px white;
+  background-color: black;
+  z-index: 1000;
 }
 
 ul {

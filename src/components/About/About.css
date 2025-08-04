@@ -1,0 +1,12 @@
+.about-div {
+    min-height: 100vh;
+    padding: 6rem 3rem;
+}
+
+.about-text {
+  text-align: center;
+  margin: auto;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  width: 55%;
+}

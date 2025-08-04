@@ -9,10 +9,23 @@
 }
 
 body {
-  /* font-family: "TheGoodMonolith", monospace; */
+  font-family: "TheGoodMonolith", monospace;
   /* font-family: "Press Start 2P", system-ui; */
-  font-family: "VT323", monospace;
+  /* font-family: "VT323", monospace; */
   background-color: black;
   color: white;
   line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.section {
+  scroll-snap-align: start;
 }

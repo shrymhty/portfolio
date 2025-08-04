@@ -9,23 +9,32 @@
 .header-div {
   display: flex;
   padding: 4rem 7rem;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100vh;
   align-items: center;  
-  
+  gap: 20rem;
 }
+
+.left p {
+  font-size: 3rem;
+  color: var(--foreground);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2rem;
+} 
 
 .my-name {
   position: relative;
-  font-size: 9rem;
+  font-size: 8rem;
   color: white;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   line-height: 1;
   font-weight: 700;
   /* font-family: 'Fira Mono', monospace; */
-  font-family: 'Medula One', sans-serif;
+  /* font-family: 'Medula One', sans-serif; */
   animation: fadeWhite 4s forwards;
   animation-delay: 2s;
+  width: fit-content;
 }
 
 .glitch-layer {
