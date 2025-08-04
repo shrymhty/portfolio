@@ -25,7 +25,7 @@
       let timeout;
 
       const scrambleText = (text) => {
-        const iterations = 50;
+        const iterations = 70;
         let scrambled = text.split('').map(() => getRandomChar()).join('');
         scrambleRef.current.textContent = scrambled;
 
@@ -46,9 +46,9 @@
             timeout = setTimeout(() => {
               const next = (currentPhraseIndex + 1) % phrases.length;
               setCurrentPhraseIndex(next);
-            }, 800); // Pause after full phrase appears
+            }, 1000); // Pause after full phrase appears
           }
-        }, 50);
+        }, 70);
       };
 
       const getRandomChar = () => {
